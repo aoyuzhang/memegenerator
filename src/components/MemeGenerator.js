@@ -33,8 +33,20 @@ const MemeGenerator = () => {
           value = {inputText.topText}
           onChange = {handleChange}
         />
+        <input
+          type = "text"
+          name = "bottomText"
+          placeholder = "Add Bottom Text"
+          value = {inputText.bottomText}
+          onChange = {handleChange}
+        />
+        <button> Generate</button>
       </form>
-
+      <div className = "meme">
+        <img src={randomImage} alt="" />
+        <h2 className = "top">{inputText.topText}</h2>
+        <h2 className = "bottom">{inputText.bottomText}</h2>
+      </div>
     </div>
   )
 }
