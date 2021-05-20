@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, {useEffect, useState } from "react"
 
 const MemeGenerator = () => {
   const[inputText, setInputText] = useState({
@@ -20,7 +20,19 @@ const MemeGenerator = () => {
   const handleSubmit = e => {
     e.preventDefault()
     console.log("submitted")
+    const randNum = Math.floor(Math.random() * allMemeImgs.length)
+    const randMemeImgUrl = allMemeImgs[randNum].url
+    setRandomImage(randMemeImgUrl)
   }
+
+  useEffect(() =>{
+    console.log("test run")
+    fetch("https://api.imgflip.com/get_memes")
+      .then(response => response.json())
+      .then(response => setAllMemeImgs(response.data.memes))
+  }, [])
+
+
 
   console.log(useState("hello"))
   return (
